@@ -1,0 +1,129 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    /* flex-direction: ; */
+    /* height:2em; */
+    background-color: cadetblue;
+}
+
+body {
+    margin: 0px 0px;
+}
+
+
+.rowdiv {
+    display: flex;
+    justify-content: baseline;
+}
+
+.productDivContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    /* height:25em; */
+    padding: 1em;
+    margin-left: 0px !important;
+    gap: 3%;
+
+    /* flex-direction: row; */
+}
+
+#dialogBox {
+
+    position: fixed;
+    top: 10%;
+    height: fit-content;
+    margin-left: 10%;
+    margin-right: 10%;
+    /* width: 160vh; */
+    padding: 1em;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: beige;
+}
+
+#dialogImg {
+    height: 20em;
+    margin: 0.5em;
+}
+
+.dialogcontainer {
+    display: flex;
+}
+
+.productDiv {
+    display: flex;
+    justify-content: baseline;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 15em;
+    max-height: 30em;
+    margin: 1.5em;
+}
+
+#mainContainer {
+    padding: 0.5em;
+    margin: 1em;
+    width: 100%;
+}
+
+.prizeContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.prizeSpan {
+    font-size: 1.5em;
+}
+
+a {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+.loadmore{
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+.crossImg {
+    margin-left: 97%;
+    border-radius: 50%;
+    border: 1px solid red;
+    width: 2em;
+    height: 2em;
+}
+
+.crossImg:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.crossImg:active {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+}
+
+#dialogName {
+    margin-bottom: 0.5em;
+}
+
+.productImage:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.productImage:active {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+}
+
+#bottomDiv {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5%;
+    font-size: 1.5em;
+}

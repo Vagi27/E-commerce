@@ -1,0 +1,53 @@
+.logout:active {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+}
+
+.logout:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.logout {
+    font-size: 0.9em;
+    width: 5em;
+    height: 2em;
+    border: none;
+    border-radius: 5px;
+}
+
+.maindiv1 {
+    display: flex;
+    align-items: center;
+    font-size: 1.6em;
+    background-color: cadetblue;
+    height: 2em;
+    padding: 0.3em;
+    padding-left: 0.5em
+}
+
+.usersection {
+    display: flex;
+    align-items: center;
+    width: 20em;
+    justify-content: space-between;
+    padding: 0.5em;
+}
+
+#cart {
+    height: 2.1em;
+    border-radius: 10px;
+    /* background-color: yellow; */
+}
+
+#cart:hover #cart:active {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+}
+
+#cart:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}

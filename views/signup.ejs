@@ -1,0 +1,41 @@
+<html lang="en">
+
+<head>
+
+
+    <link href="/styles/signup.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <%-include('partial.ejs',{user:false})%>
+    </header>
+    <div class="maindiv">
+        <h1>
+            Signup page
+        </h1>
+        <% if(error){ %>
+            <h3>
+                <%= error %>
+            </h3>
+            <% } %>
+                <div class="container">
+
+
+                    <form method="post" action="signup">
+                        <input placeholder="Name" name="name" required>
+                        <input placeholder="Username" name="username" required>
+                        <input placeholder="Email" name="email" required>
+                        <input type="password" placeholder="Password" name="password" required>
+                        <input placeholder="Mobile" name="mobile" required>
+                        <button>
+                            <input type="submit" value="Create Account">
+                        </button>
+                    </form>
+                    <a href="/login"><button>Login</button></a>
+                </div>
+
+    </div>
+</body>
+
+</html>

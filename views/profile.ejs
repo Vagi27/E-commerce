@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <style>
+        .maindiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+      
+        body {
+
+            background-image: linear-gradient(rgba(132, 181, 196, 0.678), rgb(204, 204, 159));
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    
+        <%- include('partial.ejs',{user:user}) %>
+    
+    <div class="maindiv">
+        <form method="post" action="/profile">
+            <h1>Password Change</h1>
+            <input name="username" value="<%=user.username%>" disabled />
+            <input name="email" value="<%=user.email%>" disabled />
+            <input name="password" placeholder="New Password" />
+            <input type="submit" value="submit" />
+
+        </form>
+    </div>
+
+
+</body>
+<script>
+
+</script>
+
+</html>
