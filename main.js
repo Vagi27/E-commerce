@@ -73,7 +73,6 @@ app.use(session({
     saveUninitialized: true
 }))
 
-
 app.get('/', (req, res) => {
 
     productModel.find({}, function (err, result) {
@@ -256,7 +255,7 @@ app.get("/profile", function (req, res) {
 app.post("/profile", function (req, res) {
     // console.log(req.body);
     // console.log(req.session.user.email);
-    UserModel.updateOne({username:req.session.user.username},{password : req.body.password},function(err,result){
+    UserModel.updateOne({ username: req.session.user.username }, { password: req.body.password }, function (err, result) {
         res.redirect("/");
     })
 
@@ -275,17 +274,6 @@ app.get("/cart", function (req, res) {
 
             }
         });
-
-        // fs.readFile("./usercart.txt", "utf-8", function (err, data) {
-        //     if (err) {
-        //         res.render("cart", { user: req.session.user.username, items: false })
-        //     }
-        //     else {
-        //         let cartitems = JSON.parse(data);
-        //         // console.log("username", req.session.user);
-        //         res.render("cart", { user: req.session.user, items: cartitems[req.session.user.username] });
-        //     }
-        // });
     }
     else {
         res.redirect("/");
@@ -327,6 +315,7 @@ app.post("/cart", function (req, res) {
             else {
                 usercartModel.find({ username: req.session.user.username }, function (err, result) {
 
+
                     if (sign) {
                         for (let i = 0; i < result[0].cartitems.length; i++) {
                             if (result[0].cartitems[i].filename == item) {
@@ -361,6 +350,16 @@ app.post("/cart", function (req, res) {
                         obj.filename = product.filename;
                         obj.path = product.path;
                         obj.quantity = 1;
+
+
+                        for (let i = 0; i < result[0].cartitems.length; i++) {
+                            if (result[0].cartitems[i].filename == item) {
+                                res.send("exist");
+                                return;  
+                            }
+                        }
+
+
                         result[0].cartitems.push(obj);
                         let entry = result[0].cartitems;
                         usercartModel.updateOne({ username: req.session.user.username }, { cartitems: entry }, function (err, result) {
