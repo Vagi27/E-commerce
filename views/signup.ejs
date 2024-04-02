@@ -1,96 +1,41 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Document</title>
-    <link href="/styles/signup.css" rel="stylesheet">
 
+
+    <link href="/styles/signup.css" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <%- include('partial.ejs',{user:false,home:false})%>
+        <%-include('partial.ejs',{user:false})%>
     </header>
-    <% if(error){ %>
-        <h2>
-            <%= error %>
-        </h2>
-        <% } %>
+    <div class="maindiv">
+        <h1>
+            Signup page
+        </h1>
+        <% if(error){ %>
+            <h3>
+                <%= error %>
+            </h3>
+            <% } %>
+                <div class="container">
 
-            <div class='outerDiv'>
-                <div class="left">
-                    <img class='image' src="shopping image.jpg" />
-                </div>
-
-                <div class="right">
-                    <div class='signin'>
-                        Sign Up
-                    </div>
-                    <div class='faded '>
-                        Create your account in a second
-                    </div>
 
                     <form method="post" action="signup">
-                        <div class='inputFieldDivs'>
-                            <input class="inputFields" placeholder="Name:" name="name" required>
-                        </div>
-
-                        <div class='inputFieldDivs'>
-                            <input class="inputFields" placeholder="Username" name="username" required>
-                        </div>
-
-                        <div class='inputFieldDivs'>
-                            <input class="inputFields" placeholder="Email Address:" type="email" name="email" required>
-                        </div>
-
-                        <div class='inputFieldDivs'>
-                            <input class="inputFields" type="password" placeholder="Create Password" name="password"
-                                required>
-                        </div>
-                        <div class='inputFieldDivs'>
-                            <input class="inputFields" placeholder="Mobile" name="mobile" required>
-
-                        </div>
-
-                        <div class='faded'>
-                            <input type="checkbox" required> I agree to the terms and privacy policy
-                        </div>
-
-                        <div class='createAccount'>
-                            <input class="createAccountButton" type="submit" value="Create Account">
-                        </div>
+                        <input placeholder="Name" name="name" required>
+                        <input placeholder="Username" name="username" required>
+                        <input placeholder="Email" name="email" required>
+                        <input type="password" placeholder="Password" name="password" required>
+                        <input placeholder="Mobile" name="mobile" required>
+                        <button>
+                            <input type="submit" value="Create Account">
+                        </button>
                     </form>
-
-                    <div class='faded'>
-                        Already a member?
-                        <a href="/login">
-                            Login
-                        </a>
-                    </div>
-
-
-
-                    <div class='continueWith faded'>
-                        ------------ Or continue with ------------
-                    </div>
-
-
-
-                    <div class="links">
-                        <img class='linkImages' alt="google" src="Google_Icons-09-512.webp" />
-                        <img class='linkImages' alt="instagram" src="instagram icon.png" />
-                        <img class='linkImages' alt="facebook" src="facebook icon.png" />
-                        <img class='linkImages' alt="twitter" src="twitter icon.webp" />
-                    </div>
+                    <a href="/login"><button>Login</button></a>
                 </div>
-            </div>
 
-
+    </div>
 </body>
-<script>
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href);
-    }
-</script>
 
 </html>
