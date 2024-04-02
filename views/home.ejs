@@ -9,8 +9,7 @@
 
 <body>
 
-    <%- include('partial.ejs',{user:user,home:true}) %>
-    <!-- console.log(productList); -->
+    <%- include('partial.ejs',{user:user}) %>
         <div id="mainContainer" class="container-fluid">
             <div class="productDivContainer" id="productDivContain">
                 <% for(let i=0;i<productList.length;i++){ %>

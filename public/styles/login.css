@@ -1,119 +1,99 @@
-body{
-    /* background-color: #dadada; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    margin: 0px;
-
+body {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    margin: 0;
+    /* padding:0.5em; */
+    background-image: linear-gradient(rgba(132, 181, 196, 0.678), rgb(204, 204, 159));
 }
 
 
-header{
-    height:3em;
-}
-
-
-.signin {
-    font-size: 3em;
-    font-weight: 700;
-}
-
-.continueWith, .faded{
-    color: #818181;
-}
-
-.linkImages {
-    height: 60px;
-    width: 63px;
-    border-radius: 13px;
-    border: 1px solid #d9d9d9;
-}
-
-.outerDiv {
-     background-color: #ffffff;
-    
-    padding: 5%;
-    padding-left: 10%;
-    padding-right: 10%;
+.outerdiv {
     display: flex;
-    justify-content: space-evenly;
-    max-width: 70%;
-    margin-left: 5em;
-    margin-right: 5em;
-    border-radius: 10px;
-   
-}
-.image {
-    height: 100%;
-    width: 100%;
-    min-width: 50%;
-    border-radius: 15px;
-
-}
-.right, .left {
-    padding: 2em;
-    width:50%;
-    
-}
-.right{
-    min-width: fit-content;
-    width:40%
-     ;
-}
-/* .right{
-    padding-right: 20%;
-} */
-
-.createAccountButton {
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: #7754f6;
-    border-color: unset;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: medium;
-    color: white;
+    justify-content: center;
+    align-items: center;
 }
 
-.createAccount {
-    height: 3em;
-    /* margin: 1em 0em; */
-}
-
-
-.links {
+.container {
     display: flex;
-    /* padding: 2em; */
+    justify-content: center;
+    flex-direction: column;
     /* justify-content: space-evenly; */
     /* justify-content: center; */
-    justify-content: space-around;
+    align-items: center;
+    width: 28em;
+    height: 26em;
+    /* border: 1px solid black; */
 
 }
 
-.continueWith {
-    display: inline-block;
+form {
+    display: flex;
+    height: 14em;
+    width: 70%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-bottom: 0;
 }
-.inputFields{
-    font-size: .9em;
+
+input {
+    font-size: 1.2em;
+    border: none;
     height: 2em;
-    border-radius: 10px;
-    padding:0.5em;
-    padding-left:1em;
-    width:100%;
-    border-color:#bdbdbd;
-    border-style: solid;
-    
+    border-radius: 5px;
+    padding: 0.5em;
 }
-div{
-    margin-top: 1em;
 
+#btn {
+    font-size: 1.4em;
 }
-.inputFieldDivs{
-    /* border-color:#bdbdbd; */
-    /* border:#c5c5c5; */
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 0;
 }
-.memberLogin{
+
+a {
+    width: 70%;
+    /* font-size: 1.4em; */
+    /* height: 2em; */
+    border: none;
+}
+
+button {
+    width: 100%;
+    font-size: 1.4em;
+    height: 2em;
+    border: none;
+    border-radius: 5px;
+}
+
+button:active {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+}
+
+button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+#btn:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#btn:active {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+}
+
+h3 {
+    color: red;
+    font-weight: 300;
+
 
 }

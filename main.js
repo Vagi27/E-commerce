@@ -78,40 +78,18 @@ app.get('/', (req, res) => {
     productModel.find({}, function (err, result) {
         let productlist;
         productlist = result;
-        // console.log(result);
-
-        let totalcount = productlist.length;
-        let isEndOfList = false;
-
-        let reducedProductList;
-
-        // console.log(req.session.count + 5);
-
         if (req.session.isAuthorized === true) {
-            reducedProductList = productlist.splice(0, req.session.count);
-        } else {
-            reducedProductList = productlist.splice(0, 5);
-        }
+            let totalcount = productlist.length;
+            productlist = productlist.splice(0, req.session.count);
 
-        if (totalcount == reducedProductList.length || (req.session.initial + 5) ) {
-            isEndOfList = true;
-        }
-        // console.log(reducedProductList);
-
-        if (req.session.user!=undefined) {
-            // console.log("if condition");
-            // console.log(req.session);
-            res.render("home", { user: req.session.user, productList: reducedProductList, totalCount: isEndOfList });
+            if (totalcount == req.session.initial + 5) {
+                totalcount = true;
+            }
+            res.render("home", { user: req.session.user, productList: productlist, totalCount: totalcount });
         }
         else {
-            // console.log("else condition");
-            // console.log(req.session);
-            res.render("home", { user: false, productList: reducedProductList, totalCount: isEndOfList });
+            res.render("root", { user: false });
         }
-        // }
-        // else {
-        //     res.render("signup", { user: false });
-        // }
 
     });
 
@@ -175,7 +153,7 @@ app.route("/login").get(function (req, res) {
     // let flag;
     UserModel.find({ username: req.body.username, password: req.body.password }, function (err, result) {
         if (result.length == 0) {
-            UserModel.find({ email: req.body.email, password: req.body.password }, function (err, result1) {
+            UserModel.find({ email: req.body.username, password: req.body.password }, function (err, result1) {
                 if (result1.length == 0) {
                     res.render("login", { error: "Wrong Credentials!", user: false });
                 }
@@ -183,7 +161,6 @@ app.route("/login").get(function (req, res) {
                     req.session.isAuthorized = true;
                     req.session.user = result1[0];
                     req.session.count = 5;
-                    // req.session.count = req.session.count ||5;
                     req.session.initial = 0;
                     res.redirect("/");
                     // flag = 1;
@@ -378,7 +355,7 @@ app.post("/cart", function (req, res) {
                         for (let i = 0; i < result[0].cartitems.length; i++) {
                             if (result[0].cartitems[i].filename == item) {
                                 res.send("exist");
-                                return;
+                                return;  
                             }
                         }
 
