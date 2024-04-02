@@ -6,36 +6,75 @@
 
 <body>
     <header class="header">
-        <%- include('partial.ejs',{user:false})%>
+        <%- include('partial.ejs',{user:false,home:false})%>
     </header>
-    <div class="outerdiv">
-        <div class="container">
-            <h1>Login page</h1>
-            <% if(error){ %>
-                <h3>
-                    <%= error %>
-                </h3>
-                <% } %>
+    <!-- <h1>Login page</h1> -->
+    <% if(error){ %>
+        <h3>
+            <%= error %>
+        </h3>
+        <% } %>
 
-                    <form method="post" action="/login">
-                        <!-- <input placeholder="email" name="email"/> -->
-                        <input placeholder="username or email" name="username" />
-                        <input placeholder="password" name="password" type="password" required />
-                        <!-- <button> -->
-                        <input id="btn" type="submit" name="login" value="Login" />
-                        <!-- </button> -->
 
+            <div class='outerDiv'>
+                <div class="left">
+                    <img class='image' src="shopping image.jpg" />
+                </div>
+
+                <div class="right">
+                    <div class='signin'>
+                        Sign In
+                    </div>
+                    <div class='faded '>
+                        Login to your account.
+                    </div>
+
+                    <form method="post" action="login">
+
+                        <div class='inputFieldDivs'>
+                            <input class="inputFields" placeholder="Username or Email" name="username" required>
+                        </div>
+
+
+                        <div class='inputFieldDivs'>
+                            <input class="inputFields" type="password" placeholder=" Password" name="password" required>
+                        </div>
+
+                        <div class='createAccount'>
+                            <input class="createAccountButton" type="submit" value="Login">
+                        </div>
                     </form>
 
-                    <a href="/signup"><button>Signup</button></a>
+                    <div class='faded'>
+                        Not a registered User?
+                        <a href="/signup">
+                            Signup
+                        </a>
+                    </div>
 
-        </div>
-    </div>
-    <script>
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
-    </script>
+
+
+                    <div class='continueWith faded'>
+                        ------------ Or continue with ------------
+                    </div>
+
+
+
+                    <div class="links">
+                        <img class='linkImages' alt="google" src="Google_Icons-09-512.webp" />
+                        <img class='linkImages' alt="instagram" src="instagram icon.png" />
+                        <img class='linkImages' alt="facebook" src="facebook icon.png" />
+                        <img class='linkImages' alt="twitter" src="twitter icon.webp" />
+                    </div>
+                </div>
+            </div>
+
+
+            <script>
+                if (window.history.replaceState) {
+                    window.history.replaceState(null, null, window.location.href);
+                }
+            </script>
 </body>
 
 </html>
