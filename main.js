@@ -87,10 +87,12 @@ app.get('/', (req, res) => {
 
         // console.log(req.session.count + 5);
 
-        if (req.session.isAuthorized === true) {
+        if (typeof req.session.count === Number) {
             reducedProductList = productlist.splice(0, req.session.count);
+            req.session.count+=5;
         } else {
             reducedProductList = productlist.splice(0, 5);
+            req.session.count=5;
         }
 
         if (totalcount == reducedProductList.length || (req.session.initial + 5) ) {
@@ -182,7 +184,7 @@ app.route("/login").get(function (req, res) {
                 else {
                     req.session.isAuthorized = true;
                     req.session.user = result1[0];
-                    req.session.count = 5;
+                    // req.session.count = 5;
                     // req.session.count = req.session.count ||5;
                     req.session.initial = 0;
                     res.redirect("/");
