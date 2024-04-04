@@ -177,32 +177,38 @@ app.route("/login").get(function (req, res) {
 }).post(function (req, res) {
     // let flag;
     UserModel.find({ username: req.body.username, password: req.body.password }, function (err, result) {
-        if (result.length == 0) {
-            UserModel.find({ email: req.body.username, password: req.body.password }, function (err, result1) {
-                if (result1.length == 0) {
-                    res.render("login", { error: "Wrong Credentials!", user: false });
+        // console.log(typeof result.length);
+        // if (result.length === 0) {
+        //user my have entered email as the method to login.
+        UserModel.find({ email: req.body.username, password: req.body.password }, function (err, result1) {
+            if (result.length === 0 && result1.length === 0) {
+                res.render("login", { error: "Wrong Credentials!", user: false });
+            }
+            else {
+                req.session.isAuthorized = true;
+                let user;
+
+                //which search result, username or email has given a positive result in form of an object shall be put into req.session.user
+
+                if (result[0] === Object) {
+                    // console.log(typeof result[0]);
+                    user = result[0];
                 }
                 else {
-                    req.session.isAuthorized = true;
-                    req.session.user = result1[0];
-                    // req.session.count = 5;
-                    // req.session.count = req.session.count ||5;
-                    req.session.initial = 0;
-                    res.redirect("/");
-                    // flag = 1;
+                    // console.log(typeof result1[0]);
+                    user = result1[0];
                 }
-            })
-        }
-        else {
-            req.session.isAuthorized = true;
-            req.session.user = result[0];
-            req.session.count = 5;
-            req.session.initial = 0;
-            res.redirect("/");
-            // flag = 1;
-        }
+
+                req.session.user = user;
+                // req.session.initial = 0;
+                res.redirect("/");
+                // flag = 1;
+            }
+        })
     });
-})
+
+});
+
 
 app.get("/logout", function (req, res) {
     req.session.destroy();
@@ -253,15 +259,15 @@ app.get("/loadmore", function (req, res) {
         // console.log("count", req.session.count);
         // if (products.length >= req.session.count ) {
         // console.log("inside if");
-        if(req.session.count===products.length){
-            req.session.isEndOfList=true;
+        if (req.session.count === products.length) {
+            req.session.isEndOfList = true;
         }
-        req.session.initial += 5;
+        // req.session.initial += 5;
         // console.log(req.session.initial);
         products = products.splice(0, req.session.count);
         // console.log("all products", products);
-        let responseObject={arr: products, isEndOfList: req.session.isEndOfList};
-        res.json( responseObject );
+        let responseObject = { arr: products, isEndOfList: req.session.isEndOfList };
+        res.json(responseObject);
         // }
         // else {
         //     res.end("0");
