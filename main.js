@@ -88,21 +88,22 @@ app.get('/', (req, res) => {
         // console.log(req.session.count + 5);
 
         if (typeof req.session.count === Number) {
+            req.session.count += 5;
             reducedProductList = productlist.splice(0, req.session.count);
-            req.session.count+=5;
         } else {
             reducedProductList = productlist.splice(0, 5);
-            req.session.count=5;
+            req.session.count = 5;
         }
 
-        if (totalcount == reducedProductList.length || (req.session.initial + 5) ) {
+        if (totalcount == reducedProductList.length ) {
             isEndOfList = true;
         }
         // console.log(reducedProductList);
 
-        if (req.session.user!=undefined) {
+        if (req.session.user != undefined) {
             // console.log("if condition");
-            // console.log(req.session);
+            console.log(req.session.user);
+            
             res.render("home", { user: req.session.user, productList: reducedProductList, totalCount: isEndOfList });
         }
         else {
