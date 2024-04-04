@@ -95,15 +95,15 @@ app.get('/', (req, res) => {
             req.session.count = 5;
         }
 
-        if (totalcount == reducedProductList.length ) {
-            isEndOfList = true;
+        if (totalcount == reducedProductList.length) {
+            req.session.isEndOfList = true;
         }
         // console.log(reducedProductList);
 
         if (req.session.user != undefined) {
             // console.log("if condition");
             console.log(req.session.user);
-            
+
             res.render("home", { user: req.session.user, productList: reducedProductList, totalCount: isEndOfList });
         }
         else {
@@ -251,17 +251,21 @@ app.get("/loadmore", function (req, res) {
         // console.log("count", req.session.count);
         req.session.count += 5;
         // console.log("count", req.session.count);
-        if (products.length >= req.session.count) {
-            // console.log("inside if");
-            req.session.initial += 5;
-            // console.log(req.session.initial);
-            products = products.splice(0, req.session.count);
-            // console.log("all products", products);
-            res.json(products);
+        // if (products.length >= req.session.count ) {
+        // console.log("inside if");
+        if(req.session.count===products.length){
+            req.session.isEndOfList=true;
         }
-        else {
-            res.end("0");
-        }
+        req.session.initial += 5;
+        // console.log(req.session.initial);
+        products = products.splice(0, req.session.count);
+        // console.log("all products", products);
+        let responseObject={arr: products, isEndOfList: req.session.isEndOfList};
+        res.json( responseObject );
+        // }
+        // else {
+        //     res.end("0");
+        // }
     });
 
 });

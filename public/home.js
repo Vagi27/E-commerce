@@ -32,50 +32,58 @@ function loadmore() {
     request.open("get", "/loadmore");
     request.send()
     request.addEventListener("load", function () {
-        console.log(request.responseText);
-        if (request.responseText != "0") {
-            let products = JSON.parse(request.responseText);
-            console.log(products);
-            let container = document.getElementById("productDivContain");
-            if (products.length >= 1) {
-                container.innerHTML = "";
-                for (let i = 0; i < products.length; i++) {
-                    let productdiv = document.createElement("div");
-                    productdiv.setAttribute("class", "productDiv");
+        // console.log(request.responseText);
 
-                    let img = document.createElement("img");
-                    img.setAttribute("src", `products/${products[i].filename}`);
-                    img.setAttribute("class", "productImage");
-                    img.onclick = "getdetails(event)";
+        let object = JSON.parse(request.responseText);
+        // console.log(products.isEndOfList);
 
-                    let div1 = document.createElement("div");
-                    let span1 = document.createElement("span");
-                    span1.setAttribute("class", "nameSpan");
-                    span1.innerText = products[i].name;
-
-                    let div2 = document.createElement("div");
-                    div2.setAttribute("class", "prizeContainer");
-                    let span2 = document.createElement("span");
-                    span2.setAttribute("class", "prizeSpan");
-                    span2.innerText = products[i].prize;
-                    let button2 = document.createElement("button");
-                    button2.setAttribute("class", "btn btn-primary");
-                    button2.innerText = "View Details";
-                    button2.addEventListener("click", getdetails);
-
-                    div1.appendChild(span1);
-                    div2.append(span2, button2);
-                    productdiv.append(img, div1, div2);
-
-                    container.appendChild(productdiv);
-                }
-            }
-
-        }
-        else {
-            console.log("0 found");
+        if (object.isEndOfList === true) {
             document.getElementById("loadmore").style["display"] = "none";
         }
+        let container = document.getElementById("productDivContain");
+
+        let products = object.arr;
+
+        if (products.length >= 1) {
+            container.innerHTML = "";
+            for (let i = 0; i < products.length; i++) {
+                let productdiv = document.createElement("div");
+                productdiv.setAttribute("class", "productDiv");
+
+                let img = document.createElement("img");
+                img.setAttribute("src", `products/${products[i].filename}`);
+                img.setAttribute("class", "productImage");
+                img.onclick = "getdetails(event)";
+
+                let div1 = document.createElement("div");
+                let span1 = document.createElement("span");
+                span1.setAttribute("class", "nameSpan");
+                span1.innerText = products[i].name;
+
+                let div2 = document.createElement("div");
+                div2.setAttribute("class", "prizeContainer");
+                let span2 = document.createElement("span");
+                span2.setAttribute("class", "prizeSpan");
+                span2.innerText = products[i].prize;
+                let button2 = document.createElement("button");
+                button2.setAttribute("class", "btn btn-primary");
+                button2.innerText = "View Details";
+                button2.addEventListener("click", getdetails);
+
+                div1.appendChild(span1);
+                div2.append(span2, button2);
+                productdiv.append(img, div1, div2);
+
+                container.appendChild(productdiv);
+
+            }
+        }
+
+
+        // else {
+        //     console.log("0 found");
+        //     document.getElementById("loadmore").style["display"] = "none";
+        // }
     })
 
 }
