@@ -178,7 +178,7 @@ app.route("/login").get(function (req, res) {
     // let flag;
     UserModel.find({ username: req.body.username, password: req.body.password }, function (err, result) {
         if (result.length == 0) {
-            UserModel.find({ email: req.body.email, password: req.body.password }, function (err, result1) {
+            UserModel.find({ email: req.body.username, password: req.body.password }, function (err, result1) {
                 if (result1.length == 0) {
                     res.render("login", { error: "Wrong Credentials!", user: false });
                 }
